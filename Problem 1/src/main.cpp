@@ -48,6 +48,7 @@ int solution(std::vector<int> &A, std::vector<int>& B, int N)
         last = count;
     }   
 
+    // return the degree of connectivity in the graph
     return count;
 }
 
