@@ -9,7 +9,8 @@
 // This solution might be wrong. I remember something about tunnels so it might
 // be that the graph is measurable up to the point it no longer intersects with
 // any path. In that case you'd want to start at the beginning and work up
-// towards N rather than from N backwards.
+// towards N rather than from N backwards. This is a minor change in the
+// implementation.
 int solution(std::vector<int> &A, std::vector<int>& B, int N) 
 {
 
@@ -32,10 +33,11 @@ int solution(std::vector<int> &A, std::vector<int>& B, int N)
     int count = 0;
     int last = 0;
     for(auto start = N; start>=0; start--) {
+        // Count each edge traveling to the start
         for(auto a : connected[start]) {
-            if(a < start) 
-                // count the edges between vertices 
+            if(a < start) {
                 count++;
+            }
         }
 
         // when we don't find anymore 
