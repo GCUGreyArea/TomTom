@@ -5,6 +5,11 @@
 #include <map>
 #include <set>
 
+
+// This solution might be wrong. I remember something about tunnels so it might
+// be that the graph is measurable up to the point it no longer intersects with
+// any path. In that case you'd want to start at the beginning and work up
+// towards N rather than from N backwards.
 int solution(std::vector<int> &A, std::vector<int>& B, int N) 
 {
 
@@ -29,10 +34,15 @@ int solution(std::vector<int> &A, std::vector<int>& B, int N)
     for(auto start = N; start>=0; start--) {
         for(auto a : connected[start]) {
             if(a < start) 
+                // count the edges between vertices 
                 count++;
         }
+
+        // when we don't find anymore 
+        // we've reached the limit.0
         if(last == count)
             break;
+
         last = count;
     }   
 
